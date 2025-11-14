@@ -1,18 +1,38 @@
+// src/componentes/Navbar.jsx
 import "./css/Navbar.css";
-import CartWidget from "./CartWidget"
-
+import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <a className="nav-link" href="">Venta de Vehículos 0km</a>
-      <a className="nav-link" href="">Los más vistos</a>
-      <a className="nav-link" href="">Elegí tu plan</a>
-      <a className="nav-link" href="">Más vendidos</a>
-       <img className="logo" src="/logo.png" alt="Logo 0KM Autos" className="nav-logo" />
- <CartWidget/>
+      <div className="nav-links">
+        <Link className="nav-link" to="/">
+          Venta de Vehículos 0km
+        </Link>
+        <Link className="nav-link" to="/category/sedan">
+          Los más vistos
+        </Link>
+        <Link className="nav-link" to="/category/hatchback">
+          Elegí tu plan
+        </Link>
+        <Link className="nav-link" to="/category/pickup">
+          Más vendidos
+        </Link>
+      </div>
+
+      <div className="nav-right">
+        <img
+          className="nav-logo"
+          src="/logo.png"     // está en public/logo.png
+          alt="Logo 0KM Autos"
+        />
+        <CartWidget />
+      </div>
     </nav>
   );
 };
 
 export default Navbar;
+
+

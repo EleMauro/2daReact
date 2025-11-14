@@ -1,10 +1,33 @@
-const ItemListContainer = (props) =>{
-    return(
-       <div>
-        <h1>{props.saludo}</h1>
-       </div>
-    )
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getProductos } from "../mock/AsyncService";
+import ItemList from "./ItemList";
 
-}
+const ItemListContainer = ({ saludo }) => {
+  const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-export default ItemListContainer
+  const { categoryId } = useParams();
+
+  useEffect(() => {
+    getProductos()
+      .then((res) => setProductos(res))
+      .catch((err) => console.error("Error:", err))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <h2>Cargando productos...</h2>;
+
+  const productosFiltrados = categoryId
+    ? productos.filter((prod) => prod.category === categoryId)
+    : productos;
+
+  return (
+    <div>
+      <h1>{saludo}</h1>
+      <ItemList productos={productosFiltrados} />
+    </div>
+  );
+};
+
+export default ItemListContainer;
