@@ -22,9 +22,8 @@
   color: #1e90ff;
 }
 
-/* Logo */
 .nav-logo {
-  height: 100px;
-  width: auto;
-  border-radius: 8px;
+  width: 90px;
+  height: auto;
 }
+

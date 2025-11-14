@@ -1,41 +1,26 @@
 import "./css/Navbar.css";
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
-
+import logo from "../assets/logo.png";
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <div className="nav-links">
-        {/* HOME */}
-        <Link className="nav-link" to="/">
-          Venta de Vehículos 0km
-        </Link>
+  <nav className="navbar">
+  <div className="nav-links">
+    <Link className="nav-link" to="/">Venta de Vehículos</Link>
+    <Link className="nav-link" to="/category/usados">Usados</Link>
+    <Link className="nav-link" to="/category/0km">0km</Link>
+    <Link className="nav-link" to="/category/mas-vendidos">Más vendidos</Link>
+  </div>
 
-        {/* CATEGORÍAS */}
-        <Link className="nav-link" to="/category/sedan">
-          Los más vistos
-        </Link>
-        <Link className="nav-link" to="/category/hatchback">
-          Elegí tu plan
-        </Link>
-        <Link className="nav-link" to="/category/pickup">
-          Más vendidos
-        </Link>
-      </div>
+  <div className="nav-right">
+    <img className="nav-logo" src={logo} alt="Logo OKM Autos" />
+    <CartWidget />
+  </div>
+</nav>
 
-      <div className="nav-right">
-        <img
-          className="nav-logo"
-          src="/logo.png"
-          alt="Logo 0KM Autos"
-        />
-        <CartWidget />
-      </div>
-    </nav>
   );
 };
 
 export default Navbar;
-
 
 
