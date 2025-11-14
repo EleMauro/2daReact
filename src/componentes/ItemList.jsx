@@ -1,4 +1,4 @@
-// src/componentes/ItemList.jsx
+
 import Item from "./Item";
 
 const ItemList = ({ productos }) => {

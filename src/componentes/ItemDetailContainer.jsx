@@ -1,4 +1,4 @@
-// src/componentes/ItemDetailContainer.jsx
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductoById } from "../mock/AsyncService";
@@ -8,7 +8,7 @@ const ItemDetailContainer = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const { id } = useParams(); // viene de /item/:id
+  const { id } = useParams();
 
   useEffect(() => {
     getProductoById(id)

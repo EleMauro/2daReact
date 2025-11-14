@@ -1,5 +1,3 @@
-// src/componentes/ItemDetail.jsx
-
 const ItemDetail = ({ product }) => {
   const { name, description, price, stock, category } = product;
 
