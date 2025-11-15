@@ -1,3 +1,4 @@
+// src/context/CartContext.jsx
 import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
@@ -21,22 +22,22 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const removeFromCart = (id) => {
+  const removeItem = (id) => {
     setCart((prevCart) => prevCart.filter((prod) => prod.id !== id));
   };
 
   const clearCart = () => setCart([]);
 
-  const totalQuantity = cart.reduce((acc, prod) => acc + prod.quantity, 0);
+  // 👇 ahora SON FUNCIONES
+  const totalQuantity = () =>
+    cart.reduce((acc, prod) => acc + prod.quantity, 0);
 
-  const totalPrice = cart.reduce(
-    (acc, prod) => acc + prod.quantity * prod.price,
-    0
-  );
+  const totalPrice = () =>
+    cart.reduce((acc, prod) => acc + prod.quantity * prod.price, 0);
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart, totalQuantity, totalPrice }}
+      value={{ cart, addToCart, removeItem, clearCart, totalQuantity, totalPrice }}
     >
       {children}
     </CartContext.Provider>

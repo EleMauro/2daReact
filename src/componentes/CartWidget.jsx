@@ -1,20 +1,22 @@
-
+import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import carrito from "../assets/carrito.png";
 import "./css/CartWidget.css";
-import cartIcon from "../assets/carrito.png"; 
 
 const CartWidget = () => {
+  const { totalQuantity } = useCart();
+
   return (
-    <div className="cart-widget">
-      <img
-        src={cartIcon}
-        alt="Carrito de compras"
-        className="cart-icon"
-      />
-      <span className="cart-count">X compras en carrito!</span>
-    </div>
+    <Link to="/cart" className="cart-widget">
+      <img src={carrito} alt="Carrito" className="cart-widget-icon" />
+      {totalQuantity() > 0 && (
+        <span className="cart-widget-badge">{totalQuantity()}</span>
+      )}
+    </Link>
   );
 };
 
 export default CartWidget;
+
 
 

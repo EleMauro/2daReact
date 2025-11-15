@@ -1,66 +1,53 @@
+/* Estilos SOLO para las cards de productos */
 
 .item-card {
+  width: 300px;
+  padding: 1rem;
   border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 10px;
-  width: 250px;
-  background: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  margin: 10px;
+  border-radius: 12px;
+  background: #fff;
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
 .item-img {
   width: 100%;
-  height: 150px;
+  height: 180px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .item-title {
-  margin: 10px 0 5px;
-  font-size: 18px;
+  font-size: 1.2rem;
   font-weight: bold;
-}
-
-.item-description {
-  font-size: 14px;
-  color: #444;
-}
-
-.item-price {
-  font-size: 18px;
-  font-weight: bold;
-  color: green;
-}
-
-.item-btn {
-  margin-top: auto;
-  display: block;
-  text-align: center;
-  background: black;
-  color: white;
-  padding: 8px;
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-.item-btn:hover {
-  background: #333;
 }
 
 .item-condition {
-  font-size: 13px;
-  font-weight: bold;
-  color: #0070c9;
-  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #444;
 }
 
-.products-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: flex-start;
-  padding: 20px;
+.item-description {
+  font-size: 0.9rem;
+}
+
+.item-price {
+  color: green;
+  font-weight: bold;
+}
+
+.item-btn {
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  background: #0077cc;
+  color: white;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.item-btn:hover {
+  background: #005fa3;
 }
