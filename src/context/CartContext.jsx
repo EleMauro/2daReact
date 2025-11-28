@@ -1,4 +1,4 @@
-// src/context/CartContext.jsx
+
 import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
@@ -28,8 +28,7 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = () => setCart([]);
 
-  // 👇 ahora SON FUNCIONES
-  const totalQuantity = () =>
+   const totalQuantity = () =>
     cart.reduce((acc, prod) => acc + prod.quantity, 0);
 
   const totalPrice = () =>

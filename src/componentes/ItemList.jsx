@@ -1,19 +1,24 @@
+
 import Item from "./Item";
+import "./css/Item.css";
 
-const ItemList = ({ productos }) => {
-  return (
-    <div>
-      <h2>Listado de productos</h2>
-
-      {/* ACÁ VA EL FLEX */}
-      <div className="products-container">
-        {productos.map((prod) => (
-          <Item key={prod.id} product={prod} />
-        ))}
+const ItemList = ({ items = [] }) => {
+   if (!Array.isArray(items) || items.length === 0) {
+    return (
+      <div className="itemlist-empty">
+        <h2>No hay productos para mostrar</h2>
       </div>
-    </div>
-  );
+    );
+  }
+
+return (
+  <div className="itemlist-container">
+    {items.map((prod) => (
+      <Item key={prod.id} product={prod} />  
+    ))}
+  </div>
+);
 };
 
-export default ItemList;
 
+export default ItemList;
