@@ -1,31 +1,37 @@
-// src/componentes/Item.jsx
-import "./css/Item.css";
 import { Link } from "react-router-dom";
+import "./css/Item.css";
+
+const getImageUrl = (path) => {
+  if (!path) return "";
+  const clean = path.trim().replace(/^\//, "");
+  return `${import.meta.env.BASE_URL}${clean}`;
+};
 
 const Item = ({ product }) => {
-  const { id, name, description, price, condition, img } = product;
+  const imageUrl = getImageUrl(product.img);
 
   return (
-    <article className="item-card">
-      <img
-        src={img}
-        alt={name}
-        className="item-img"
-      />
+    <div className="item-card">
+      <div className="item-image-wrapper">
+        {imageUrl ? (
+          <img src={imageUrl} alt={product.title} className="item-image" />
+        ) : (
+          <div className="item-image-placeholder">Sin imagen</div>
+        )}
+      </div>
 
-      <h3 className="item-title">{name}</h3>
+      <div className="item-info">
+        <h3>{product.title}</h3>
+        <p>Vehículo {product.category}</p>
+        <p className="item-price">${product.price}</p>
+      </div>
 
-      <p className="item-condition">
-        {condition === "0km" ? "Vehículo 0km" : "Vehículo usado"}
-      </p>
-
-      <p className="item-description">{description}</p>
-      <p className="item-price">${price}</p>
-
-      <Link to={`/item/${id}`} className="item-btn">
-        Ver detalle
-      </Link>
-    </article>
+      <div className="item-actions">
+        <Link to={`/item/${product.id}`}>
+          <button>Ver detalle</button>
+        </Link>
+      </div>
+    </div>
   );
 };
 

@@ -3,6 +3,7 @@ import Navbar from "./componentes/Navbar";
 import ItemListContainer from "./componentes/ItemListContainer";
 import ItemDetailContainer from "./componentes/ItemDetailContainer";
 import Cart from "./componentes/Cart";
+import Checkout from "./componentes/Checkout";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           element={<ItemListContainer saludo="Filtrando por categoría" />}
         />
         <Route path="/item/:id" element={<ItemDetailContainer />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<h2>404 - Página no encontrada</h2>} />
       </Routes>

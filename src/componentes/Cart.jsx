@@ -1,9 +1,10 @@
+// src/componentes/Cart.jsx
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom";
 import "./css/Cart.css";
 
 const Cart = () => {
-
-  const { cart, totalPrice, removeFromCart, clearCart } = useCart();
+  const { cart, totalPrice, removeItem, clearCart } = useCart();
 
   if (cart.length === 0) {
     return (
@@ -15,42 +16,34 @@ const Cart = () => {
 
   return (
     <div className="cart-container">
-      <h2>Carrito de compras</h2>
+      <h2>Tu carrito</h2>
 
       <div className="cart-items">
-        {cart.map((item) => (
-          <div className="cart-item" key={item.id}>
-            <img src={item.img} alt={item.name} className="cart-item-img" />
-
-            <div className="cart-item-info">
-              <h3>{item.name}</h3>
-              <p>Precio: ${item.price}</p>
-              <p>Cantidad: {item.quantity}</p>
-              <p>Subtotal: ${item.price * item.quantity}</p>
-
-              <button
-                className="cart-remove"
-                onClick={() => removeFromCart(item.id)}
-              >
-                Eliminar
-              </button>
-            </div>
+        {cart.map((prod) => (
+          <div key={prod.id} className="cart-item">
+            <h3>{prod.title}</h3>
+            <p>Cantidad: {prod.quantity}</p>
+            <p>Precio unitario: ${prod.price}</p>
+            <p>Subtotal: ${prod.price * prod.quantity}</p>
+            <button onClick={() => removeItem(prod.id)}>Eliminar</button>
           </div>
         ))}
       </div>
 
-      <div className="cart-footer">
-        {}
-        <h3>Total: ${totalPrice}</h3>
+      <div className="cart-summary">
+        <h3>Total: ${totalPrice()}</h3>
 
-        <button className="cart-clear" onClick={clearCart}>
-          Vaciar carrito
-        </button>
+        <div className="cart-actions">
+          <button onClick={clearCart}>Vaciar carrito</button>
+
+          <Link to="/checkout">
+            <button>Finalizar compra</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Cart;
-
 
